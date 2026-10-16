@@ -1,0 +1,1613 @@
+{
+ "as_of": "2026-10-16",
+ "generated_at": "2026-10-16T09:54:06-05:00",
+ "source": "YCharts (MCP, cloud routine)",
+ "models": [
+  {
+   "name": "Conservative",
+   "tier": "Conservative Models",
+   "portfolio_id": 597220,
+   "sleeves": [
+    {
+     "id": 490414,
+     "name": "RA3_SLEEVE_CASH",
+     "weight": 0.02,
+     "holdings": [
+      {
+       "ticker": "CASH",
+       "weight": 1.0
+      }
+     ]
+    },
+    {
+     "id": 548980,
+     "name": "RA3_SLEEVE_CORE_BOND_1",
+     "weight": 0.47,
+     "holdings": [
+      {
+       "ticker": "SGOV",
+       "weight": 1.0
+      }
+     ]
+    },
+    {
+     "id": 1141466,
+     "name": "RA3_SLEEVE_TACTICAL_STOCK_L/S",
+     "weight": 0.168,
+     "holdings": [
+      {
+       "ticker": "MINT",
+       "weight": 0.5
+      },
+      {
+       "ticker": "SHV",
+       "weight": 0.5
+      }
+     ]
+    },
+    {
+     "id": 1141467,
+     "name": "RA3_SLEEVE_REGIONAL_STOCK_L/S",
+     "weight": 0.108,
+     "holdings": [
+      {
+       "ticker": "JPST",
+       "weight": 1.0
+      }
+     ]
+    },
+    {
+     "id": 1141598,
+     "name": "RA3_SLEEVE_CORE_STOCK_2",
+     "weight": 0.12,
+     "holdings": [
+      {
+       "ticker": "VTI",
+       "weight": 1.0
+      }
+     ]
+    },
+    {
+     "id": 1145523,
+     "name": "RA3_SLEEVE_DEFINED_RISK",
+     "weight": 0.03,
+     "holdings": [
+      {
+       "ticker": "SFLR",
+       "weight": 1.0
+      }
+     ]
+    },
+    {
+     "id": 1470892,
+     "name": "RA3_SLEEVE_TACTICAL_STOCK_L/S (S&P 500)",
+     "weight": 0.084,
+     "holdings": [
+      {
+       "ticker": "GSY",
+       "weight": 1.0
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Absolute Return Conservative",
+   "tier": "Conservative Models",
+   "portfolio_id": 604837,
+   "sleeves": [
+    {
+     "id": 490414,
+     "name": "RA3_SLEEVE_CASH",
+     "weight": 0.01,
+     "holdings": [
+      {
+       "ticker": "CASH",
+       "weight": 1.0
+      }
+     ]
+    },
+    {
+     "id": 548980,
+     "name": "RA3_SLEEVE_CORE_BOND_1",
+     "weight": 0.36,
+     "holdings": [
+      {
+       "ticker": "SGOV",
+       "weight": 1.0
+      }
+     ]
+    },
+    {
+     "id": 1141466,
+     "name": "RA3_SLEEVE_TACTICAL_STOCK_L/S",
+     "weight": 0.2333,
+     "holdings": [
+      {
+       "ticker": "MINT",
+       "weight": 0.5
+      },
+      {
+       "ticker": "SHV",
+       "weight": 0.5
+      }
+     ]
+    },
+    {
+     "id": 1141467,
+     "name": "RA3_SLEEVE_REGIONAL_STOCK_L/S",
+     "weight": 0.15,
+     "holdings": [
+      {
+       "ticker": "JPST",
+       "weight": 1.0
+      }
+     ]
+    },
+    {
+     "id": 1145523,
+     "name": "RA3_SLEEVE_DEFINED_RISK",
+     "weight": 0.05,
+     "holdings": [
+      {
+       "ticker": "SFLR",
+       "weight": 1.0
+      }
+     ]
+    },
+    {
+     "id": 1146697,
+     "name": "RA3_SLEEVE_ALTERNATIVES_CONSVERVATIVE",
+     "weight": 0.08,
+     "holdings": [
+      {
+       "ticker": "BWX",
+       "weight": 0.5
+      },
+      {
+       "ticker": "SGOV",
+       "weight": 0.5
+      }
+     ]
+    },
+    {
+     "id": 1470892,
+     "name": "RA3_SLEEVE_TACTICAL_STOCK_L/S (S&P 500)",
+     "weight": 0.1167,
+     "holdings": [
+      {
+       "ticker": "GSY",
+       "weight": 1.0
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Tax Conservative",
+   "tier": "Conservative Models",
+   "portfolio_id": 1146887,
+   "sleeves": [
+    {
+     "id": 1146835,
+     "name": "RA3_TAX_SLEEVE_CORE_STOCK",
+     "weight": 0.12,
+     "holdings": [
+      {
+       "ticker": "VTI",
+       "weight": 0.7
+      },
+      {
+       "ticker": "OMFL",
+       "weight": 0.3
+      }
+     ]
+    },
+    {
+     "id": 1146853,
+     "name": "RA3_TAX_SLEEVE_TACTICAL_STOCK",
+     "weight": 0.15,
+     "holdings": [
+      {
+       "ticker": "PTNQ",
+       "weight": 0.6
+      },
+      {
+       "ticker": "PTLC",
+       "weight": 0.4
+      }
+     ]
+    },
+    {
+     "id": 1146860,
+     "name": "RA3_TAX_SLEEVE_TACTICAL_STOCK_L/S",
+     "weight": 0.1333,
+     "holdings": [
+      {
+       "ticker": "JMST",
+       "weight": 1.0
+      }
+     ]
+    },
+    {
+     "id": 1277723,
+     "name": "RA3_TAX_SLEEVE_CORE_BOND_BOXX",
+     "weight": 0.2368,
+     "holdings": [
+      {
+       "ticker": "BOXX",
+       "weight": 1.0
+      }
+     ]
+    },
+    {
+     "id": 1470947,
+     "name": "RA3_TAX_SLEEVE_TACTICAL_STOCK_L/S (S&P 500)",
+     "weight": 0.0667,
+     "holdings": [
+      {
+       "ticker": "GSY",
+       "weight": 1.0
+      }
+     ]
+    },
+    {
+     "id": 1534979,
+     "name": "RA3_TAX_SLEEVE_CORE_BOND_INT-TERM_MUNI_BONDS_2",
+     "weight": 0.1092,
+     "holdings": [
+      {
+       "ticker": "MEAR",
+       "weight": 1.0
+      }
+     ]
+    },
+    {
+     "id": 1534983,
+     "name": "RA3_TAX_SLEEVE_CORE_BOND_VAR_RATE_PREFERRED",
+     "weight": 0.164,
+     "holdings": [
+      {
+       "ticker": "PFFV",
+       "weight": 1.0
+      }
+     ]
+    },
+    {
+     "id": 2109993,
+     "name": "RA3_TAX_SLEEVE_CASH",
+     "weight": 0.02,
+     "holdings": [
+      {
+       "ticker": "BIL",
+       "weight": 1.0
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Moderate-Conservative",
+   "tier": "Moderate-Conservative Models",
+   "portfolio_id": 2413005,
+   "sleeves": [
+    {
+     "id": 490414,
+     "name": "RA3_SLEEVE_CASH",
+     "weight": 0.02,
+     "holdings": [
+      {
+       "ticker": "CASH",
+       "weight": 1.0
+      }
+     ]
+    },
+    {
+     "id": 548980,
+     "name": "RA3_SLEEVE_CORE_BOND_1",
+     "weight": 0.31,
+     "holdings": [
+      {
+       "ticker": "SGOV",
+       "weight": 1.0
+      }
+     ]
+    },
+    {
+     "id": 1141466,
+     "name": "RA3_SLEEVE_TACTICAL_STOCK_L/S",
+     "weight": 0.182,
+     "holdings": [
+      {
+       "ticker": "MINT",
+       "weight": 0.5
+      },
+      {
+       "ticker": "SHV",
+       "weight": 0.5
+      }
+     ]
+    },
+    {
+     "id": 1141467,
+     "name": "RA3_SLEEVE_REGIONAL_STOCK_L/S",
+     "weight": 0.117,
+     "holdings": [
+      {
+       "ticker": "JPST",
+       "weight": 1.0
+      }
+     ]
+    },
+    {
+     "id": 1141598,
+     "name": "RA3_SLEEVE_CORE_STOCK_2",
+     "weight": 0.1035,
+     "holdings": [
+      {
+       "ticker": "VTI",
+       "weight": 1.0
+      }
+     ]
+    },
+    {
+     "id": 1145523,
+     "name": "RA3_SLEEVE_DEFINED_RISK",
+     "weight": 0.05,
+     "holdings": [
+      {
+       "ticker": "SFLR",
+       "weight": 1.0
+      }
+     ]
+    },
+    {
+     "id": 1470892,
+     "name": "RA3_SLEEVE_TACTICAL_STOCK_L/S (S&P 500)",
+     "weight": 0.091,
+     "holdings": [
+      {
+       "ticker": "GSY",
+       "weight": 1.0
+      }
+     ]
+    },
+    {
+     "id": 1965545,
+     "name": "RA3_SLEEVE_MACRO_FACTOR_STOCK_SELECTION",
+     "weight": 0.1265,
+     "holdings": [
+      {
+       "ticker": "USMV",
+       "weight": 0.25
+      },
+      {
+       "ticker": "GDX",
+       "weight": 0.25
+      },
+      {
+       "ticker": "XLE",
+       "weight": 0.25
+      },
+      {
+       "ticker": "SPLV",
+       "weight": 0.125
+      },
+      {
+       "ticker": "SPMO",
+       "weight": 0.125
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Absolute Return Moderate-Conservative",
+   "tier": "Moderate-Conservative Models",
+   "portfolio_id": 1380248,
+   "sleeves": [
+    {
+     "id": 490414,
+     "name": "RA3_SLEEVE_CASH",
+     "weight": 0.01,
+     "holdings": [
+      {
+       "ticker": "CASH",
+       "weight": 1.0
+      }
+     ]
+    },
+    {
+     "id": 548980,
+     "name": "RA3_SLEEVE_CORE_BOND_1",
+     "weight": 0.25,
+     "holdings": [
+      {
+       "ticker": "SGOV",
+       "weight": 1.0
+      }
+     ]
+    },
+    {
+     "id": 1141466,
+     "name": "RA3_SLEEVE_TACTICAL_STOCK_L/S",
+     "weight": 0.2567,
+     "holdings": [
+      {
+       "ticker": "MINT",
+       "weight": 0.5
+      },
+      {
+       "ticker": "SHV",
+       "weight": 0.5
+      }
+     ]
+    },
+    {
+     "id": 1141467,
+     "name": "RA3_SLEEVE_REGIONAL_STOCK_L/S",
+     "weight": 0.165,
+     "holdings": [
+      {
+       "ticker": "JPST",
+       "weight": 1.0
+      }
+     ]
+    },
+    {
+     "id": 1145523,
+     "name": "RA3_SLEEVE_DEFINED_RISK",
+     "weight": 0.05,
+     "holdings": [
+      {
+       "ticker": "SFLR",
+       "weight": 1.0
+      }
+     ]
+    },
+    {
+     "id": 1146697,
+     "name": "RA3_SLEEVE_ALTERNATIVES_CONSVERVATIVE",
+     "weight": 0.06,
+     "holdings": [
+      {
+       "ticker": "BWX",
+       "weight": 0.5
+      },
+      {
+       "ticker": "SGOV",
+       "weight": 0.5
+      }
+     ]
+    },
+    {
+     "id": 1470892,
+     "name": "RA3_SLEEVE_TACTICAL_STOCK_L/S (S&P 500)",
+     "weight": 0.1283,
+     "holdings": [
+      {
+       "ticker": "GSY",
+       "weight": 1.0
+      }
+     ]
+    },
+    {
+     "id": 1965545,
+     "name": "RA3_SLEEVE_MACRO_FACTOR_STOCK_SELECTION",
+     "weight": 0.08,
+     "holdings": [
+      {
+       "ticker": "USMV",
+       "weight": 0.25
+      },
+      {
+       "ticker": "GDX",
+       "weight": 0.25
+      },
+      {
+       "ticker": "XLE",
+       "weight": 0.25
+      },
+      {
+       "ticker": "SPLV",
+       "weight": 0.125
+      },
+      {
+       "ticker": "SPMO",
+       "weight": 0.125
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Moderate",
+   "tier": "Moderate Models",
+   "portfolio_id": 552644,
+   "sleeves": [
+    {
+     "id": 490414,
+     "name": "RA3_SLEEVE_CASH",
+     "weight": 0.02,
+     "holdings": [
+      {
+       "ticker": "CASH",
+       "weight": 1.0
+      }
+     ]
+    },
+    {
+     "id": 548980,
+     "name": "RA3_SLEEVE_CORE_BOND_1",
+     "weight": 0.17,
+     "holdings": [
+      {
+       "ticker": "SGOV",
+       "weight": 1.0
+      }
+     ]
+    },
+    {
+     "id": 548985,
+     "name": "RA3_SLEEVE_CORE_STOCK_1",
+     "weight": 0.1575,
+     "holdings": [
+      {
+       "ticker": "VTI",
+       "weight": 1.0
+      }
+     ]
+    },
+    {
+     "id": 1141466,
+     "name": "RA3_SLEEVE_TACTICAL_STOCK_L/S",
+     "weight": 0.1867,
+     "holdings": [
+      {
+       "ticker": "MINT",
+       "weight": 0.5
+      },
+      {
+       "ticker": "SHV",
+       "weight": 0.5
+      }
+     ]
+    },
+    {
+     "id": 1141467,
+     "name": "RA3_SLEEVE_REGIONAL_STOCK_L/S",
+     "weight": 0.12,
+     "holdings": [
+      {
+       "ticker": "JPST",
+       "weight": 1.0
+      }
+     ]
+    },
+    {
+     "id": 1145523,
+     "name": "RA3_SLEEVE_DEFINED_RISK",
+     "weight": 0.06,
+     "holdings": [
+      {
+       "ticker": "SFLR",
+       "weight": 1.0
+      }
+     ]
+    },
+    {
+     "id": 1470892,
+     "name": "RA3_SLEEVE_TACTICAL_STOCK_L/S (S&P 500)",
+     "weight": 0.0933,
+     "holdings": [
+      {
+       "ticker": "GSY",
+       "weight": 1.0
+      }
+     ]
+    },
+    {
+     "id": 1965545,
+     "name": "RA3_SLEEVE_MACRO_FACTOR_STOCK_SELECTION",
+     "weight": 0.1925,
+     "holdings": [
+      {
+       "ticker": "USMV",
+       "weight": 0.25
+      },
+      {
+       "ticker": "GDX",
+       "weight": 0.25
+      },
+      {
+       "ticker": "XLE",
+       "weight": 0.25
+      },
+      {
+       "ticker": "SPLV",
+       "weight": 0.125
+      },
+      {
+       "ticker": "SPMO",
+       "weight": 0.125
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Absolute Return Moderate",
+   "tier": "Moderate Models",
+   "portfolio_id": 555767,
+   "sleeves": [
+    {
+     "id": 490414,
+     "name": "RA3_SLEEVE_CASH",
+     "weight": 0.01,
+     "holdings": [
+      {
+       "ticker": "CASH",
+       "weight": 1.0
+      }
+     ]
+    },
+    {
+     "id": 548979,
+     "name": "RA3_SLEEVE_ALTERNATIVES_STANDARD",
+     "weight": 0.08,
+     "holdings": [
+      {
+       "ticker": "PDBC",
+       "weight": 0.5
+      },
+      {
+       "ticker": "REZ",
+       "weight": 0.25
+      },
+      {
+       "ticker": "INDS",
+       "weight": 0.25
+      }
+     ]
+    },
+    {
+     "id": 548980,
+     "name": "RA3_SLEEVE_CORE_BOND_1",
+     "weight": 0.11,
+     "holdings": [
+      {
+       "ticker": "SGOV",
+       "weight": 1.0
+      }
+     ]
+    },
+    {
+     "id": 1141466,
+     "name": "RA3_SLEEVE_TACTICAL_STOCK_L/S",
+     "weight": 0.3033,
+     "holdings": [
+      {
+       "ticker": "MINT",
+       "weight": 0.5
+      },
+      {
+       "ticker": "SHV",
+       "weight": 0.5
+      }
+     ]
+    },
+    {
+     "id": 1141467,
+     "name": "RA3_SLEEVE_REGIONAL_STOCK_L/S",
+     "weight": 0.195,
+     "holdings": [
+      {
+       "ticker": "JPST",
+       "weight": 1.0
+      }
+     ]
+    },
+    {
+     "id": 1145523,
+     "name": "RA3_SLEEVE_DEFINED_RISK",
+     "weight": 0.05,
+     "holdings": [
+      {
+       "ticker": "SFLR",
+       "weight": 1.0
+      }
+     ]
+    },
+    {
+     "id": 1470892,
+     "name": "RA3_SLEEVE_TACTICAL_STOCK_L/S (S&P 500)",
+     "weight": 0.1517,
+     "holdings": [
+      {
+       "ticker": "GSY",
+       "weight": 1.0
+      }
+     ]
+    },
+    {
+     "id": 1965545,
+     "name": "RA3_SLEEVE_MACRO_FACTOR_STOCK_SELECTION",
+     "weight": 0.1,
+     "holdings": [
+      {
+       "ticker": "USMV",
+       "weight": 0.25
+      },
+      {
+       "ticker": "GDX",
+       "weight": 0.25
+      },
+      {
+       "ticker": "XLE",
+       "weight": 0.25
+      },
+      {
+       "ticker": "SPLV",
+       "weight": 0.125
+      },
+      {
+       "ticker": "SPMO",
+       "weight": 0.125
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Tax Moderate",
+   "tier": "Moderate Models",
+   "portfolio_id": 1146880,
+   "sleeves": [
+    {
+     "id": 1146835,
+     "name": "RA3_TAX_SLEEVE_CORE_STOCK",
+     "weight": 0.3,
+     "holdings": [
+      {
+       "ticker": "VTI",
+       "weight": 0.7
+      },
+      {
+       "ticker": "OMFL",
+       "weight": 0.3
+      }
+     ]
+    },
+    {
+     "id": 1146853,
+     "name": "RA3_TAX_SLEEVE_TACTICAL_STOCK",
+     "weight": 0.2,
+     "holdings": [
+      {
+       "ticker": "PTNQ",
+       "weight": 0.6
+      },
+      {
+       "ticker": "PTLC",
+       "weight": 0.4
+      }
+     ]
+    },
+    {
+     "id": 1146860,
+     "name": "RA3_TAX_SLEEVE_TACTICAL_STOCK_L/S",
+     "weight": 0.1333,
+     "holdings": [
+      {
+       "ticker": "JMST",
+       "weight": 1.0
+      }
+     ]
+    },
+    {
+     "id": 1277723,
+     "name": "RA3_TAX_SLEEVE_CORE_BOND_BOXX",
+     "weight": 0.13,
+     "holdings": [
+      {
+       "ticker": "BOXX",
+       "weight": 1.0
+      }
+     ]
+    },
+    {
+     "id": 1470947,
+     "name": "RA3_TAX_SLEEVE_TACTICAL_STOCK_L/S (S&P 500)",
+     "weight": 0.0667,
+     "holdings": [
+      {
+       "ticker": "GSY",
+       "weight": 1.0
+      }
+     ]
+    },
+    {
+     "id": 1534979,
+     "name": "RA3_TAX_SLEEVE_CORE_BOND_INT-TERM_MUNI_BONDS_2",
+     "weight": 0.06,
+     "holdings": [
+      {
+       "ticker": "MEAR",
+       "weight": 1.0
+      }
+     ]
+    },
+    {
+     "id": 1534983,
+     "name": "RA3_TAX_SLEEVE_CORE_BOND_VAR_RATE_PREFERRED",
+     "weight": 0.09,
+     "holdings": [
+      {
+       "ticker": "PFFV",
+       "weight": 1.0
+      }
+     ]
+    },
+    {
+     "id": 2109993,
+     "name": "RA3_TAX_SLEEVE_CASH",
+     "weight": 0.02,
+     "holdings": [
+      {
+       "ticker": "BIL",
+       "weight": 1.0
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Moderate-Aggressive",
+   "tier": "Moderate-Aggressive Models",
+   "portfolio_id": 2413016,
+   "sleeves": [
+    {
+     "id": 490414,
+     "name": "RA3_SLEEVE_CASH",
+     "weight": 0.01,
+     "holdings": [
+      {
+       "ticker": "CASH",
+       "weight": 1.0
+      }
+     ]
+    },
+    {
+     "id": 548980,
+     "name": "RA3_SLEEVE_CORE_BOND_1",
+     "weight": 0.11,
+     "holdings": [
+      {
+       "ticker": "SGOV",
+       "weight": 1.0
+      }
+     ]
+    },
+    {
+     "id": 548985,
+     "name": "RA3_SLEEVE_CORE_STOCK_1",
+     "weight": 0.189,
+     "holdings": [
+      {
+       "ticker": "VTI",
+       "weight": 1.0
+      }
+     ]
+    },
+    {
+     "id": 1141466,
+     "name": "RA3_SLEEVE_TACTICAL_STOCK_L/S",
+     "weight": 0.1867,
+     "holdings": [
+      {
+       "ticker": "MINT",
+       "weight": 0.5
+      },
+      {
+       "ticker": "SHV",
+       "weight": 0.5
+      }
+     ]
+    },
+    {
+     "id": 1141467,
+     "name": "RA3_SLEEVE_REGIONAL_STOCK_L/S",
+     "weight": 0.12,
+     "holdings": [
+      {
+       "ticker": "JPST",
+       "weight": 1.0
+      }
+     ]
+    },
+    {
+     "id": 1145523,
+     "name": "RA3_SLEEVE_DEFINED_RISK",
+     "weight": 0.06,
+     "holdings": [
+      {
+       "ticker": "SFLR",
+       "weight": 1.0
+      }
+     ]
+    },
+    {
+     "id": 1470892,
+     "name": "RA3_SLEEVE_TACTICAL_STOCK_L/S (S&P 500)",
+     "weight": 0.0933,
+     "holdings": [
+      {
+       "ticker": "GSY",
+       "weight": 1.0
+      }
+     ]
+    },
+    {
+     "id": 1965545,
+     "name": "RA3_SLEEVE_MACRO_FACTOR_STOCK_SELECTION",
+     "weight": 0.231,
+     "holdings": [
+      {
+       "ticker": "USMV",
+       "weight": 0.25
+      },
+      {
+       "ticker": "GDX",
+       "weight": 0.25
+      },
+      {
+       "ticker": "XLE",
+       "weight": 0.25
+      },
+      {
+       "ticker": "SPLV",
+       "weight": 0.125
+      },
+      {
+       "ticker": "SPMO",
+       "weight": 0.125
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Absolute Return Moderate-Aggressive",
+   "tier": "Moderate-Aggressive Models",
+   "portfolio_id": 604832,
+   "sleeves": [
+    {
+     "id": 490414,
+     "name": "RA3_SLEEVE_CASH",
+     "weight": 0.01,
+     "holdings": [
+      {
+       "ticker": "CASH",
+       "weight": 1.0
+      }
+     ]
+    },
+    {
+     "id": 548979,
+     "name": "RA3_SLEEVE_ALTERNATIVES_STANDARD",
+     "weight": 0.1,
+     "holdings": [
+      {
+       "ticker": "PDBC",
+       "weight": 0.5
+      },
+      {
+       "ticker": "REZ",
+       "weight": 0.25
+      },
+      {
+       "ticker": "INDS",
+       "weight": 0.25
+      }
+     ]
+    },
+    {
+     "id": 548985,
+     "name": "RA3_SLEEVE_CORE_STOCK_1",
+     "weight": 0.0845,
+     "holdings": [
+      {
+       "ticker": "VTI",
+       "weight": 1.0
+      }
+     ]
+    },
+    {
+     "id": 1141466,
+     "name": "RA3_SLEEVE_TACTICAL_STOCK_L/S",
+     "weight": 0.3267,
+     "holdings": [
+      {
+       "ticker": "MINT",
+       "weight": 0.5
+      },
+      {
+       "ticker": "SHV",
+       "weight": 0.5
+      }
+     ]
+    },
+    {
+     "id": 1141467,
+     "name": "RA3_SLEEVE_REGIONAL_STOCK_L/S",
+     "weight": 0.21,
+     "holdings": [
+      {
+       "ticker": "JPST",
+       "weight": 1.0
+      }
+     ]
+    },
+    {
+     "id": 1470892,
+     "name": "RA3_SLEEVE_TACTICAL_STOCK_L/S (S&P 500)",
+     "weight": 0.1633,
+     "holdings": [
+      {
+       "ticker": "GSY",
+       "weight": 1.0
+      }
+     ]
+    },
+    {
+     "id": 1965545,
+     "name": "RA3_SLEEVE_MACRO_FACTOR_STOCK_SELECTION",
+     "weight": 0.1055,
+     "holdings": [
+      {
+       "ticker": "USMV",
+       "weight": 0.25
+      },
+      {
+       "ticker": "GDX",
+       "weight": 0.25
+      },
+      {
+       "ticker": "XLE",
+       "weight": 0.25
+      },
+      {
+       "ticker": "SPLV",
+       "weight": 0.125
+      },
+      {
+       "ticker": "SPMO",
+       "weight": 0.125
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Aggressive",
+   "tier": "Aggressive Models",
+   "portfolio_id": 597223,
+   "sleeves": [
+    {
+     "id": 490414,
+     "name": "RA3_SLEEVE_CASH",
+     "weight": 0.01,
+     "holdings": [
+      {
+       "ticker": "CASH",
+       "weight": 1.0
+      }
+     ]
+    },
+    {
+     "id": 548985,
+     "name": "RA3_SLEEVE_CORE_STOCK_1",
+     "weight": 0.2295,
+     "holdings": [
+      {
+       "ticker": "VTI",
+       "weight": 1.0
+      }
+     ]
+    },
+    {
+     "id": 1141466,
+     "name": "RA3_SLEEVE_TACTICAL_STOCK_L/S",
+     "weight": 0.196,
+     "holdings": [
+      {
+       "ticker": "MINT",
+       "weight": 0.5
+      },
+      {
+       "ticker": "SHV",
+       "weight": 0.5
+      }
+     ]
+    },
+    {
+     "id": 1141467,
+     "name": "RA3_SLEEVE_REGIONAL_STOCK_L/S",
+     "weight": 0.126,
+     "holdings": [
+      {
+       "ticker": "JPST",
+       "weight": 1.0
+      }
+     ]
+    },
+    {
+     "id": 1145523,
+     "name": "RA3_SLEEVE_DEFINED_RISK",
+     "weight": 0.06,
+     "holdings": [
+      {
+       "ticker": "SFLR",
+       "weight": 1.0
+      }
+     ]
+    },
+    {
+     "id": 1470892,
+     "name": "RA3_SLEEVE_TACTICAL_STOCK_L/S (S&P 500)",
+     "weight": 0.098,
+     "holdings": [
+      {
+       "ticker": "GSY",
+       "weight": 1.0
+      }
+     ]
+    },
+    {
+     "id": 1965545,
+     "name": "RA3_SLEEVE_MACRO_FACTOR_STOCK_SELECTION",
+     "weight": 0.2805,
+     "holdings": [
+      {
+       "ticker": "USMV",
+       "weight": 0.25
+      },
+      {
+       "ticker": "GDX",
+       "weight": 0.25
+      },
+      {
+       "ticker": "XLE",
+       "weight": 0.25
+      },
+      {
+       "ticker": "SPLV",
+       "weight": 0.125
+      },
+      {
+       "ticker": "SPMO",
+       "weight": 0.125
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Tax Aggressive",
+   "tier": "Aggressive Models",
+   "portfolio_id": 1146891,
+   "sleeves": [
+    {
+     "id": 1146835,
+     "name": "RA3_TAX_SLEEVE_CORE_STOCK",
+     "weight": 0.48,
+     "holdings": [
+      {
+       "ticker": "VTI",
+       "weight": 0.7
+      },
+      {
+       "ticker": "OMFL",
+       "weight": 0.3
+      }
+     ]
+    },
+    {
+     "id": 1146853,
+     "name": "RA3_TAX_SLEEVE_TACTICAL_STOCK",
+     "weight": 0.2,
+     "holdings": [
+      {
+       "ticker": "PTNQ",
+       "weight": 0.6
+      },
+      {
+       "ticker": "PTLC",
+       "weight": 0.4
+      }
+     ]
+    },
+    {
+     "id": 1146860,
+     "name": "RA3_TAX_SLEEVE_TACTICAL_STOCK_L/S",
+     "weight": 0.1667,
+     "holdings": [
+      {
+       "ticker": "JMST",
+       "weight": 1.0
+      }
+     ]
+    },
+    {
+     "id": 1277723,
+     "name": "RA3_TAX_SLEEVE_CORE_BOND_BOXX",
+     "weight": 0.06,
+     "holdings": [
+      {
+       "ticker": "BOXX",
+       "weight": 1.0
+      }
+     ]
+    },
+    {
+     "id": 1470947,
+     "name": "RA3_TAX_SLEEVE_TACTICAL_STOCK_L/S (S&P 500)",
+     "weight": 0.0833,
+     "holdings": [
+      {
+       "ticker": "GSY",
+       "weight": 1.0
+      }
+     ]
+    },
+    {
+     "id": 2109993,
+     "name": "RA3_TAX_SLEEVE_CASH",
+     "weight": 0.01,
+     "holdings": [
+      {
+       "ticker": "BIL",
+       "weight": 1.0
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "All Tactical",
+   "tier": "Specialty Models",
+   "portfolio_id": 1297251,
+   "sleeves": [
+    {
+     "id": 490414,
+     "name": "RA3_SLEEVE_CASH",
+     "weight": 0.01,
+     "holdings": [
+      {
+       "ticker": "CASH",
+       "weight": 1.0
+      }
+     ]
+    },
+    {
+     "id": 1141466,
+     "name": "RA3_SLEEVE_TACTICAL_STOCK_L/S",
+     "weight": 0.3934,
+     "holdings": [
+      {
+       "ticker": "MINT",
+       "weight": 0.5
+      },
+      {
+       "ticker": "SHV",
+       "weight": 0.5
+      }
+     ]
+    },
+    {
+     "id": 1141467,
+     "name": "RA3_SLEEVE_REGIONAL_STOCK_L/S",
+     "weight": 0.25,
+     "holdings": [
+      {
+       "ticker": "JPST",
+       "weight": 1.0
+      }
+     ]
+    },
+    {
+     "id": 1242656,
+     "name": "RA3_SLEEVE_BIG_PICTURE_L/S (SPHB/BIL)",
+     "weight": 0.15,
+     "holdings": [
+      {
+       "ticker": "BIL",
+       "weight": 1.0
+      }
+     ]
+    },
+    {
+     "id": 1470892,
+     "name": "RA3_SLEEVE_TACTICAL_STOCK_L/S (S&P 500)",
+     "weight": 0.1966,
+     "holdings": [
+      {
+       "ticker": "GSY",
+       "weight": 1.0
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Macro Factor",
+   "tier": "Specialty Models",
+   "portfolio_id": 1729042,
+   "sleeves": [
+    {
+     "id": 1965545,
+     "name": "RA3_SLEEVE_MACRO_FACTOR_STOCK_SELECTION",
+     "weight": 0.99267,
+     "holdings": [
+      {
+       "ticker": "USMV",
+       "weight": 0.25
+      },
+      {
+       "ticker": "GDX",
+       "weight": 0.25
+      },
+      {
+       "ticker": "XLE",
+       "weight": 0.25
+      },
+      {
+       "ticker": "SPLV",
+       "weight": 0.125
+      },
+      {
+       "ticker": "SPMO",
+       "weight": 0.125
+      }
+     ]
+    },
+    {
+     "id": null,
+     "name": "CASH",
+     "weight": 0.00733,
+     "holdings": [
+      {
+       "ticker": "CASH",
+       "weight": 1.0
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "IA3 High Income",
+   "tier": "Specialty Models",
+   "portfolio_id": 1589463,
+   "sleeves": [
+    {
+     "id": 490414,
+     "name": "RA3_SLEEVE_CASH",
+     "weight": 0.01,
+     "holdings": [
+      {
+       "ticker": "CASH",
+       "weight": 1.0
+      }
+     ]
+    },
+    {
+     "id": 1549414,
+     "name": "IA3_SLEEVE_LOW_DURATION_LOW_QUALITY_TACTICAL",
+     "weight": 0.33,
+     "holdings": [
+      {
+       "ticker": "ICSH",
+       "weight": 1.0
+      }
+     ]
+    },
+    {
+     "id": 1589439,
+     "name": "IA3_SLEEVE_LOW_DURATION_HIGH_QUALITY",
+     "weight": 0.33,
+     "holdings": [
+      {
+       "ticker": "MINT",
+       "weight": 0.45
+      },
+      {
+       "ticker": "GSY",
+       "weight": 0.35
+      },
+      {
+       "ticker": "TFLO",
+       "weight": 0.2
+      }
+     ]
+    },
+    {
+     "id": 1589447,
+     "name": "IA3_SLEEVE_LOW_DURATION_INTERMEDIATE_QUALITY",
+     "weight": 0.33,
+     "holdings": [
+      {
+       "ticker": "GBIL",
+       "weight": 1.0
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "IA3 Cash Management",
+   "tier": "Specialty Models",
+   "portfolio_id": 1589508,
+   "sleeves": [
+    {
+     "id": 490414,
+     "name": "RA3_SLEEVE_CASH",
+     "weight": 0.01,
+     "holdings": [
+      {
+       "ticker": "CASH",
+       "weight": 1.0
+      }
+     ]
+    },
+    {
+     "id": 1441021,
+     "name": "IA3_SLEEVE_CASH_EQUIVALENTS",
+     "weight": 0.495,
+     "holdings": [
+      {
+       "ticker": "BIL",
+       "weight": 0.5
+      },
+      {
+       "ticker": "SHV",
+       "weight": 0.5
+      }
+     ]
+    },
+    {
+     "id": 1589439,
+     "name": "IA3_SLEEVE_LOW_DURATION_HIGH_QUALITY",
+     "weight": 0.495,
+     "holdings": [
+      {
+       "ticker": "MINT",
+       "weight": 0.45
+      },
+      {
+       "ticker": "GSY",
+       "weight": 0.35
+      },
+      {
+       "ticker": "TFLO",
+       "weight": 0.2
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "funds": {
+  "BIL": {
+   "name": "SPDR Bloomberg 1-3 Month T-Bill ETF",
+   "group": "Fixed Income"
+  },
+  "BOXX": {
+   "name": "Alpha Architect 1-3 Month Box ETF",
+   "group": "Fixed Income"
+  },
+  "BWX": {
+   "name": "SPDR Bloomberg International Treasury Bond ETF",
+   "group": "Fixed Income"
+  },
+  "CASH": {
+   "name": "Cash",
+   "group": "Cash"
+  },
+  "GBIL": {
+   "name": "Goldman Sachs Access Treasury 0-1 Year ETF",
+   "group": "Fixed Income"
+  },
+  "GDX": {
+   "name": "VanEck Gold Miners ETF",
+   "group": "Equity"
+  },
+  "GSY": {
+   "name": "Invesco Ultra Short Duration ETF",
+   "group": "Fixed Income"
+  },
+  "ICSH": {
+   "name": "iShares Ultra Short Duration Bond Active ETF",
+   "group": "Fixed Income"
+  },
+  "INDS": {
+   "name": "Pacer Industrial Real Estate ETF",
+   "group": "Equity"
+  },
+  "JMST": {
+   "name": "JPMorgan Ultra-Short Municipal Income ETF",
+   "group": "Fixed Income"
+  },
+  "JPST": {
+   "name": "JPMorgan Ultra-Short Income ETF",
+   "group": "Fixed Income"
+  },
+  "MEAR": {
+   "name": "iShares Short Maturity Municipal Bond Active ETF",
+   "group": "Fixed Income"
+  },
+  "MINT": {
+   "name": "PIMCO Enhanced Short Maturity Active ETF",
+   "group": "Fixed Income"
+  },
+  "OMFL": {
+   "name": "Invesco Russell 1000 Dynamic Multifactor ETF",
+   "group": "Equity"
+  },
+  "PDBC": {
+   "name": "Invesco Optimum Yield Diversified Commodity ETF",
+   "group": "Real Assets"
+  },
+  "PFFV": {
+   "name": "Global X Variable Rate Preferred ETF",
+   "group": "Equity"
+  },
+  "PTLC": {
+   "name": "Pacer Trendpilot US Large Cap ETF",
+   "group": "Equity"
+  },
+  "PTNQ": {
+   "name": "Pacer Trendpilot 100 ETF",
+   "group": "Equity"
+  },
+  "REZ": {
+   "name": "iShares Residential and Multisector Real Estate ETF",
+   "group": "Equity"
+  },
+  "SFLR": {
+   "name": "Innovator Equity Managed Floor ETF",
+   "group": "Alternative Strategies"
+  },
+  "SGOV": {
+   "name": "iShares 0-3 Month Treasury Bond ETF",
+   "group": "Fixed Income"
+  },
+  "SHV": {
+   "name": "iShares 0-1 Year Treasury Bond ETF",
+   "group": "Fixed Income"
+  },
+  "SPLV": {
+   "name": "Invesco S&P 500 Low Volatility ETF",
+   "group": "Equity"
+  },
+  "SPMO": {
+   "name": "Invesco S&P 500 Momentum ETF",
+   "group": "Equity"
+  },
+  "TFLO": {
+   "name": "iShares Treasury Floating Rate Bond ETF",
+   "group": "Fixed Income"
+  },
+  "USMV": {
+   "name": "iShares MSCI USA Min Vol Factor ETF",
+   "group": "Equity"
+  },
+  "VTI": {
+   "name": "Vanguard Total Stock Market ETF",
+   "group": "Equity"
+  },
+  "XLE": {
+   "name": "Energy Select Sector SPDR ETF",
+   "group": "Equity"
+  }
+ }
+}

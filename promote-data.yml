@@ -1,0 +1,60 @@
+# Promotes the routine's data.json commit from its claude/* branch to main.
+#
+# Routines push to claude/-prefixed branches by default. Rather than lift
+# that restriction, this workflow merges automatically - but only when:
+#   1. the ONLY file that changed is data.json, and
+#   2. validate_data.py passes here, independently of the routine.
+# Anything else stays on its branch for a human to look at.
+
+name: Promote data.json to main
+
+on:
+  push:
+    branches: ["claude/**"]
+    paths: ["data.json"]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: promote-data
+  cancel-in-progress: false
+
+jobs:
+  promote:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Refuse unless data.json is the only change
+        run: |
+          git fetch origin main
+          CHANGED="$(git diff --name-only origin/main...HEAD)"
+          echo "Changed files:"; echo "$CHANGED"
+          if [ "$CHANGED" != "data.json" ]; then
+            echo "::error::Refusing to promote - files other than data.json changed."
+            exit 1
+          fi
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validate against what is currently on main
+        run: |
+          git show origin/main:data.json > /tmp/prev.json
+          python validate_data.py data.json --prev /tmp/prev.json
+
+      - name: Merge into main
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -B main origin/main
+          git merge --ff-only "${GITHUB_SHA}" \
+            || git merge --no-edit -m "Promote data refresh from ${GITHUB_REF_NAME}" "${GITHUB_SHA}"
+          git push origin main
+
+      - name: Clean up the branch
+        run: git push origin --delete "${GITHUB_REF_NAME}" || true

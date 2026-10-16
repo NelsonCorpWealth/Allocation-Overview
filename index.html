@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Model Allocation Overview — NelsonCorp Wealth Management</title>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://nelsoncorpwealth.github.io/Dashboards/nav.js" defer></script>
+<style>
+  :root{--green:#2d6a4f;--green-dark:#1b4332;--green-mid:#40916c;--green-light:#d8f3dc;--green-xlight:#f0faf2;
+    --gold:#c9a84c;--gold-light:#f0d080;--red:#b83232;--off-white:#f8f9f7;--light-gray:#eef0eb;--mid-gray:#c4cbbf;--border:#dde5d8;
+    --text-dark:#1b2e1f;--text-mid:#3d5240;--text-light:#7a917e;--pos:#1a6b3c;--neg:#b83232;--neu:#7a6a2a;
+    --shadow-sm:0 1px 3px rgba(27,67,50,0.06),0 1px 2px rgba(27,67,50,0.04);
+    --radius:8px;
+    /* building-block colours from the firm's Excel overview, plus two for sleeves the overview leaves out */
+    --nc-green:#007452;--c-bond:#007452;--c-stock:#BBB930;--c-macro:#926A41;--c-tact:#FD9302;--c-alt:#2874A6;--c-dr:#9c7cc9;--c-cash:#a9b2a6;--c-unk:#b83232;
+    --range-bar:#d9ddd6;--range-edge:#b9c0b6;--cur:#e02020}
+  html,body{margin:0;padding:0}
+  *{box-sizing:border-box}
+  body{font-family:'Source Sans 3',sans-serif;font-size:16px;color:var(--text-dark);background:var(--off-white);min-height:100vh}
+
+  /* ── HEADER (NelsonCorp standard — do not restyle) ── */
+  .hdr{background:var(--green-dark);padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:72px;border-bottom:4px solid var(--gold);flex-wrap:wrap;gap:8px;line-height:normal}
+  .hdr-left{display:flex;align-items:center;gap:14px}
+  .logo-img{height:42px;filter:brightness(0) invert(1);object-fit:contain}
+  .hdr-div{width:1px;height:30px;background:rgba(255,255,255,0.18)}
+  .hdr-sub{font-size:0.8rem;color:rgba(255,255,255,0.5);letter-spacing:0.1em;text-transform:uppercase}
+  .hdr-date{font-size:0.82rem;color:rgba(255,255,255,0.4)}
+  .title-bar{background:var(--green);padding:16px 40px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+  .title-bar h1{margin:0;font-family:'Merriweather',serif;font-size:1.35rem;font-weight:400;line-height:normal;color:#fff}
+  .title-bar h1 span{color:var(--gold-light)}
+  @media(max-width:768px){.hdr,.title-bar{padding-left:18px;padding-right:18px}}
+  @media(max-width:600px){.hdr{height:auto;padding-top:10px;padding-bottom:10px}.hdr-sub{font-size:0.7rem}.hdr-date{font-size:0.72rem}.title-bar h1{font-size:1.1rem}}
+  .title-meta{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+  .update-info{font-size:0.8rem;color:rgba(255,255,255,0.5)}
+  .status-badge{display:flex;align-items:center;gap:7px;background:rgba(0,0,0,0.18);border:1px solid rgba(255,255,255,0.12);padding:4px 14px;border-radius:20px;font-size:0.76rem;color:rgba(255,255,255,0.65);letter-spacing:0.05em}
+  .sdot{width:7px;height:7px;border-radius:50%;background:var(--mid-gray);flex-shrink:0}
+  .sdot.live{background:#52d68a}.sdot.loading{background:var(--gold)}.sdot.error{background:#e06060}
+
+  /* ── LAYOUT ── */
+  .main{max-width:1380px;margin:0 auto;padding:30px 48px 70px}
+  @media(max-width:768px){.main{padding:20px 18px 50px}}
+  .banner{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:13px 20px;margin-bottom:22px;display:flex;align-items:center;gap:12px;font-size:0.86rem;color:var(--text-mid);box-shadow:var(--shadow-sm)}
+  .banner.err{border-color:#e6b8b8;background:#fdf3f3;color:var(--neg)}
+  .banner.warn{border-color:#e8d9a8;background:#fdf9ec;color:#6b5a1e}
+  #dashboard{display:none}
+
+  /* key / legend strip */
+  .key{display:flex;flex-wrap:wrap;gap:8px 22px;align-items:center;font-size:0.8rem;color:var(--text-mid);margin:0 0 22px;padding:12px 18px;background:#fff;border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow-sm)}
+  .key .lg{display:flex;align-items:center;gap:7px}
+  .key .lbl{font-size:0.66rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-light);margin-right:4px}
+  .key .sep{width:1px;height:18px;background:var(--border);margin:0 4px}
+  .sw{width:11px;height:11px;border-radius:2px;flex-shrink:0;display:inline-block}
+  .key .rsw{width:34px;height:10px;background:var(--range-bar);border:1px solid var(--range-edge);border-radius:2px}
+  .key .cdot{width:9px;height:9px;border-radius:50%;background:var(--cur);box-shadow:0 0 0 2px #fff,0 0 0 3px var(--range-edge)}
+
+  /* tier bands (from the printed overview) */
+  .band{background:var(--nc-green);color:#fff;font-family:'Merriweather',serif;font-weight:700;font-size:0.92rem;letter-spacing:0.14em;text-transform:uppercase;text-align:center;padding:9px 16px;margin:30px 0 16px;border-left:4px solid var(--gold);position:relative}
+  .band:first-child{margin-top:0}
+  .band .cnt{position:absolute;right:14px;top:50%;transform:translateY(-50%);font-family:'Source Sans 3',sans-serif;font-weight:400;font-size:0.7rem;letter-spacing:0.08em;color:rgba(255,255,255,0.65)}
+
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:6px;align-items:stretch}
+  .cards.wide{grid-template-columns:repeat(4,1fr)}
+  @media(max-width:1180px){.cards,.cards.wide{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:700px){.cards,.cards.wide{grid-template-columns:1fr}}
+
+  .card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow-sm);position:relative;overflow:hidden;min-width:0;display:flex;flex-direction:column}
+  .card-accent{height:3px;background:var(--green-mid)}
+  .card.ghost{border-style:dashed;background:transparent;box-shadow:none}
+  .card.ghost .card-accent{background:var(--mid-gray)}
+  .card-body{padding:16px 18px 14px;flex:1;display:flex;flex-direction:column}
+  .card-title{font-family:'Merriweather',serif;font-size:0.95rem;font-weight:700;color:var(--nc-green);margin:0 0 2px;line-height:1.3}
+  .card-sub{font-size:0.7rem;color:var(--text-light);letter-spacing:0.04em;margin-bottom:12px}
+  .mix{display:flex;align-items:center;gap:14px}
+  .donut{width:122px;height:122px;flex-shrink:0}
+  .donut text{font-family:'Source Sans 3',sans-serif;font-size:11.5px;font-weight:700}
+  .cards.wide .donut{width:104px;height:104px}
+  .cards.wide .leg{font-size:0.76rem}
+  .leg{flex:1;min-width:0;font-size:0.82rem}
+  .leg-row{display:flex;align-items:center;gap:8px;padding:2px 0;color:var(--text-mid)}
+  .leg-row .nm{flex:1;line-height:1.2;font-weight:600}
+  .leg-row .pct{font-weight:700;color:var(--text-dark);font-variant-numeric:tabular-nums;min-width:34px;text-align:right}
+  .leg-row.unk .nm{color:var(--neg)}
+  .ghost-msg{font-size:0.82rem;color:var(--text-light);line-height:1.5;padding:12px 0}
+
+  .range{margin-top:14px;padding-top:12px;border-top:1px solid var(--light-gray)}
+  .range-head{display:flex;justify-content:space-between;align-items:baseline;font-size:0.66rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--text-light);margin-bottom:8px}
+  .range-head .cur-lbl{text-transform:none;letter-spacing:0;font-size:0.8rem;font-weight:600;color:var(--text-mid)}
+  .range-head .cur-lbl b{font-weight:700;color:var(--cur)}
+  .track{position:relative;height:22px;background-image:linear-gradient(to right,var(--light-gray) 1px,transparent 1px);background-size:20% 100%;border-left:1px solid var(--light-gray);border-right:1px solid var(--light-gray)}
+  .track .bar{position:absolute;top:4px;height:14px;background:var(--range-bar);border:1px solid var(--range-edge);border-radius:2px;min-width:2px}
+  .track .cur{position:absolute;top:6px;width:10px;height:10px;margin-left:-5px;border-radius:50%;background:var(--cur);box-shadow:0 0 0 2px #fff}
+  .track .cur.out{background:#7a1a1a}
+  .range-ends{position:relative;height:16px;font-size:0.74rem;font-weight:700;color:var(--nc-green);font-variant-numeric:tabular-nums}
+  .range-ends span{position:absolute;top:2px;transform:translateX(-50%);white-space:nowrap}
+  .range-axis{display:flex;justify-content:space-between;font-size:0.64rem;color:var(--text-light);margin-top:2px;font-variant-numeric:tabular-nums}
+
+  details.sleeves{margin-top:12px;border-top:1px solid var(--light-gray);padding-top:8px}
+  details.sleeves summary{cursor:pointer;font-size:0.72rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-light);list-style:none;display:flex;align-items:center;gap:6px;user-select:none}
+  details.sleeves summary::-webkit-details-marker{display:none}
+  details.sleeves summary::before{content:'';width:0;height:0;border-left:5px solid var(--text-light);border-top:4px solid transparent;border-bottom:4px solid transparent;transition:transform .14s}
+  details.sleeves[open] summary::before{transform:rotate(90deg)}
+  details.sleeves summary:hover{color:var(--green)}
+  .sl-table{width:100%;border-collapse:collapse;margin-top:8px;font-size:0.76rem}
+  .sl-table td{padding:5px 4px;border-bottom:1px solid var(--light-gray);vertical-align:top}
+  .sl-table tr:last-child td{border-bottom:none}
+  .sl-table .sw{margin-top:3px}
+  .sl-table .sn{color:var(--text-dark);font-weight:600}
+  .sl-table .sc{color:var(--text-light);font-size:0.68rem}
+  .sl-table .sw-td{width:16px}
+  .sl-table .w{text-align:right;font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap;width:44px}
+  .sl-table .h{color:var(--text-mid);font-variant-numeric:tabular-nums}
+  .sl-table .h .eq{color:var(--nc-green);font-weight:600}
+  .tk{font-weight:700;letter-spacing:0.02em}
+
+  .notes{background:#fff;border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow-sm);padding:18px 24px;font-size:0.82rem;color:var(--text-mid);line-height:1.6;margin-top:34px}
+  .notes h3{font-family:'Merriweather',serif;font-size:0.84rem;font-weight:700;color:var(--green-dark);margin:0 0 8px}
+  .notes p{margin:0 0 8px}
+  .notes p:last-child{margin:0}
+  .site-footer{background:linear-gradient(135deg,#152d22 0%,var(--green-dark) 100%);border-top:2px solid var(--gold);padding:28px 48px;text-align:center;font-size:0.73rem;color:rgba(255,255,255,0.3);line-height:2;margin-top:60px}
+  .site-footer::before{content:'';display:block;width:60px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:0 auto 16px;opacity:0.4}
+</style>
+</head>
+<body>
+<div class="hdr">
+  <div class="hdr-left">
+    <img src="https://nelsoncorp.com/wp-content/uploads/2025/06/NelsonCorp-Logo-2025.png" class="logo-img" alt="NelsonCorp" onerror="this.style.display='none'">
+    <div class="hdr-div"></div>
+    <div class="hdr-sub">Portfolio Construction</div>
+  </div>
+  <div class="hdr-date" id="hdr-date"></div>
+</div>
+<div class="title-bar">
+  <h1>Model Allocation <span>Overview</span></h1>
+  <div class="title-meta">
+    <div class="status-badge"><span class="sdot loading" id="sdot"></span><span id="stext">Loading…</span></div>
+    <div class="update-info" id="update-info"></div>
+  </div>
+</div>
+
+<div class="main">
+  <div class="banner" id="banner"><span id="banner-text">Loading model allocations…</span></div>
+  <div id="dashboard">
+    <div class="key" id="key"></div>
+    <div id="groups"></div>
+    <div class="notes" id="notes"></div>
+  </div>
+</div>
+
+<div class="site-footer">
+  NelsonCorp Wealth Management &nbsp;&middot;&nbsp; Internal Use Only &nbsp;&middot;&nbsp; 880 13th Avenue North, Clinton, Iowa 52732<br>
+  Securities offered through Registered Representatives of Cambridge Investment Research, Inc., a Broker/Dealer, Member FINRA/SIPC.
+  Advisory services offered through Cambridge Investment Research Advisors, Inc., a Registered Investment Advisor. NelsonCorp Wealth Management and Cambridge are not affiliated.
+</div>
+
+<script>
+// =====================================================================
+// NELSONCORP MODEL ALLOCATION OVERVIEW
+// data.json is written daily by the YCharts refresh routine (see README).
+// Building-block categories, the equity range and current equity are all
+// derived here from that file, so the page never needs editing when a
+// portfolio changes in YCharts.
+// =====================================================================
+
+// Building blocks, in donut order. Colours match the firm's Excel overview.
+const CATS = [
+  {key:'bond',  label:'Core Bond',          color:'var(--c-bond)',  ink:'#fff'},
+  {key:'stock', label:'Core Stock',         color:'var(--c-stock)', ink:'#1b2e1f'},
+  {key:'macro', label:'Core Stock (Macro)', color:'var(--c-macro)', ink:'#fff'},
+  {key:'tact',  label:'Tactical',           color:'var(--c-tact)',  ink:'#1b2e1f'},
+  {key:'dr',    label:'Defined Risk',       color:'var(--c-dr)',    ink:'#fff'},
+  {key:'alt',   label:'Alternatives',       color:'var(--c-alt)',   ink:'#fff'},
+  {key:'cash',  label:'Cash',               color:'var(--c-cash)',  ink:'#1b2e1f'},
+  {key:'unk',   label:'Unmapped sleeve',    color:'var(--c-unk)',   ink:'#fff'},
+];
+const CAT = Object.fromEntries(CATS.map(c=>[c.key,c]));
+
+// Sleeve name → building block. First match wins. Add a rule here if a new
+// sleeve family shows up (it appears in red as "Unmapped" until you do).
+const RULES = [
+  [/^CASH$|_SLEEVE_CASH$/,                     'cash'],
+  [/CORE_BOND|^IA3_/,                          'bond'],
+  [/MACRO_FACTOR/,                             'macro'],
+  [/CORE_STOCK/,                               'stock'],
+  [/TACTICAL_STOCK|REGIONAL_STOCK|BIG_PICTURE/,'tact'],
+  [/DEFINED_RISK/,                             'dr'],
+  [/ALTERNATIVES/,                             'alt'],
+];
+function catOf(name){ for(const [re,k] of RULES){ if(re.test(name)) return k; } return 'unk'; }
+
+// Equity range: low end = sleeves always in stocks; high end adds the tactical
+// sleeves. Current equity counts the equity-classified ETFs inside those sleeves.
+const EQ_ALWAYS = new Set(['stock','macro']);
+const EQ_TACTICAL = new Set(['tact']);
+
+const TIERS = ['Conservative Models','Moderate-Conservative Models','Moderate Models','Moderate-Aggressive Models','Aggressive Models','Specialty Models'];
+const MISSING = [];  // e.g. {name:'New Model', tier:'Moderate Models'} — shows a placeholder card
+
+const pct = x => Math.round(x*100) + '%';
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+function prettySleeve(name){
+  let n = name.replace(/\s+$/,'');
+  const tax = /^RA3_TAX_SLEEVE_/.test(n);
+  n = n.replace(/^RA3_TAX_SLEEVE_|^RA3_SLEEVE_|^IA3_SLEEVE_/,'');
+  n = n.replace(/CONSVERVATIVE/,'CONSERVATIVE').replace(/_/g,' ').toLowerCase();
+  n = n.replace(/\b\w/g, c=>c.toUpperCase()).replace(/\bL\/s\b/g,'L/S').replace(/S&p/g,'S&P')
+       .replace(/\(([a-z0-9\/]+)\)/gi, (m,g)=>'('+g.toUpperCase()+')').replace(/Int-term/,'Int-Term').replace(/Boxx/,'BOXX');
+  return (tax ? 'Tax ' : '') + n;
+}
+
+function analyze(model, funds){
+  const alloc = {}; CATS.forEach(c=>alloc[c.key]=0);
+  let min=0, max=0, cur=0;
+  const sleeves = model.sleeves.map(s=>{
+    const k = catOf(s.name);
+    alloc[k] += s.weight;
+    const eqShare = s.holdings.reduce((a,h)=> a + ((funds[h.ticker]||{}).group==='Equity' ? h.weight : 0), 0);
+    if(EQ_ALWAYS.has(k)){ min += s.weight; max += s.weight; cur += s.weight*eqShare; }
+    else if(EQ_TACTICAL.has(k)){ max += s.weight; cur += s.weight*eqShare; }
+    return Object.assign({cat:k, eqShare, pretty:prettySleeve(s.name)}, s);
+  });
+  return {alloc, min, max, cur, sleeves, outOfRange: cur < min-0.005 || cur > max+0.005};
+}
+
+// ---- donut ----
+function donutSVG(alloc){
+  const R=58, r=30, cx=61, cy=61;
+  const parts = CATS.filter(c=>alloc[c.key]>0.0005).map(c=>({c, v:alloc[c.key]}));
+  const tot = parts.reduce((a,p)=>a+p.v,0) || 1;
+  let a0=-Math.PI/2, out='';
+  const P=(ang,rad)=>[cx+rad*Math.cos(ang), cy+rad*Math.sin(ang)];
+  if(parts.length===1){
+    const p=parts[0];
+    out += `<circle cx="${cx}" cy="${cy}" r="${(R+r)/2}" fill="none" stroke="${p.c.color}" stroke-width="${R-r}"/>`;
+    out += `<text x="${cx}" y="${cy+4}" text-anchor="middle" fill="var(--text-dark)">${pct(p.v)}</text>`;
+    return `<svg class="donut" viewBox="0 0 122 122" role="img" aria-label="Allocation">${out}</svg>`;
+  }
+  for(const p of parts){
+    const a1=a0+2*Math.PI*p.v/tot, big=(a1-a0)>Math.PI?1:0;
+    const [x0,y0]=P(a0,R),[x1,y1]=P(a1,R),[x2,y2]=P(a1,r),[x3,y3]=P(a0,r);
+    out += `<path d="M${x0.toFixed(2)} ${y0.toFixed(2)} A${R} ${R} 0 ${big} 1 ${x1.toFixed(2)} ${y1.toFixed(2)} L${x2.toFixed(2)} ${y2.toFixed(2)} A${r} ${r} 0 ${big} 0 ${x3.toFixed(2)} ${y3.toFixed(2)} Z" fill="${p.c.color}" stroke="#fff" stroke-width="2" stroke-linejoin="round"><title>${esc(p.c.label)}: ${pct(p.v)}</title></path>`;
+    if(p.v/tot>=0.09){ const [tx,ty]=P((a0+a1)/2,(R+r)/2); out += `<text x="${tx.toFixed(1)}" y="${(ty+4).toFixed(1)}" text-anchor="middle" fill="${p.c.ink}" pointer-events="none">${pct(p.v)}</text>`; }
+    a0=a1;
+  }
+  return `<svg class="donut" viewBox="0 0 122 122" role="img" aria-label="Allocation">${out}</svg>`;
+}
+
+function trackHTML(a){
+  const lo=a.min*100, hi=a.max*100, c=a.cur*100;
+  const bar = hi-lo<0.5 ? `<div class="bar" style="left:${lo}%;width:2px"></div>` : `<div class="bar" style="left:${lo}%;width:${hi-lo}%"></div>`;
+  return `<div class="track">${bar}<div class="cur ${a.outOfRange?'out':''}" style="left:${c}%" title="Current equity ${pct(a.cur)}"></div></div>`;
+}
+
+function cardHTML(m){
+  const a=m.a;
+  const leg = CATS.filter(c=>a.alloc[c.key]>0.0005).map(c=>
+    `<div class="leg-row ${c.key==='unk'?'unk':''}"><span class="sw" style="background:${c.color}"></span><span class="nm">${esc(c.label)}</span><span class="pct">${pct(a.alloc[c.key])}</span></div>`).join('');
+  const rows = a.sleeves.map(s=>{
+    const hold = s.holdings.map(h=>{ const eq=(m.funds[h.ticker]||{}).group==='Equity'; return `<span class="${eq?'eq':''}"><span class="tk">${esc(h.ticker)}</span> ${pct(h.weight)}</span>`; }).join(' &middot; ');
+    return `<tr><td class="sw-td"><span class="sw" style="background:${CAT[s.cat].color}"></span></td><td><div class="sn">${esc(s.pretty)}</div><div class="sc">${esc(CAT[s.cat].label)}</div></td><td class="w">${pct(s.weight)}</td><td class="h">${hold}</td></tr>`;
+  }).join('');
+  const lo=a.min*100, hi=a.max*100, clamp=v=>Math.min(Math.max(v,4),96);
+  const ends = Math.abs(hi-lo)<0.5 ? `<span style="left:${clamp(lo)}%">${pct(a.min)}</span>`
+    : `<span style="left:${clamp(lo)}%">${pct(a.min)}</span><span style="left:${clamp(hi)}%">${pct(a.max)}</span>`;
+  return `<div class="card"><div class="card-accent"></div><div class="card-body">
+    <div class="card-title">${esc(m.name)}</div>
+    <div class="card-sub">YCharts #${m.portfolio_id} &middot; ${a.sleeves.length} sleeves</div>
+    <div class="mix">${donutSVG(a.alloc)}<div class="leg">${leg}</div></div>
+    <div class="range">
+      <div class="range-head"><span>Equity Range</span><span class="cur-lbl">Current equity <b>${pct(a.cur)}</b></span></div>
+      ${trackHTML(a)}
+      <div class="range-ends">${ends}</div>
+      <div class="range-axis"><span>0%</span><span>20%</span><span>40%</span><span>60%</span><span>80%</span><span>100%</span></div>
+    </div>
+    <details class="sleeves"><summary>Sleeves &amp; current holdings</summary><table class="sl-table"><tbody>${rows}</tbody></table></details>
+  </div></div>`;
+}
+function ghostHTML(g){
+  return `<div class="card ghost"><div class="card-accent"></div><div class="card-body">
+    <div class="card-title" style="color:var(--text-light)">${esc(g.name)}</div>
+    <div class="card-sub">Not built in YCharts</div>
+    <div class="ghost-msg">No YCharts model portfolio yet. Once it is set up, add its ID to the refresh routine and it will appear here.</div>
+  </div></div>`;
+}
+function renderGroups(models){
+  let h='';
+  for(const tier of TIERS){
+    const rows=models.filter(m=>m.tier===tier), ghosts=MISSING.filter(m=>m.tier===tier);
+    if(!rows.length && !ghosts.length) continue;
+    const n=rows.length+ghosts.length;
+    h += `<div class="band">${esc(tier)}<span class="cnt">${rows.length} model${rows.length===1?'':'s'}${ghosts.length?` · ${ghosts.length} pending`:''}</span></div>`;
+    h += `<div class="cards ${n>3?'wide':''}">${rows.map(cardHTML).join('')}${ghosts.map(ghostHTML).join('')}</div>`;
+  }
+  document.getElementById('groups').innerHTML=h;
+}
+function renderKey(){
+  document.getElementById('key').innerHTML =
+    `<span class="lbl">Building blocks</span>` +
+    CATS.filter(c=>c.key!=='unk').map(c=>`<span class="lg"><span class="sw" style="background:${c.color}"></span>${esc(c.label)}</span>`).join('') +
+    `<span class="sep"></span><span class="lg"><span class="rsw"></span>Equity range</span><span class="lg"><span class="cdot"></span>Current equity</span>`;
+}
+function fmtGen(iso){ const d=new Date(iso); return isNaN(d)?(iso||'—'):d.toLocaleString('en-US',{month:'short',day:'numeric',year:'numeric',hour:'numeric',minute:'2-digit',timeZone:'America/Chicago'})+' CT'; }
+function fmtDate(s){ const d=new Date(s+'T12:00:00'); return isNaN(d)?s:d.toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'}); }
+function renderNotes(data){
+  document.getElementById('notes').innerHTML=`
+    <h3>Where the numbers come from</h3>
+    <p>Every model is read straight from its YCharts model portfolio using target weights, so when a sleeve is swapped or a model is re-weighted in YCharts, this page follows on the next morning's refresh. Each top-level sleeve is assigned to a building block by its sleeve name; one the page doesn't recognise is shown in red as "Unmapped" rather than guessed.</p>
+    <p><b>Equity range.</b> The low end is the weight of sleeves that are always in stocks (Core Stock and Core Stock (Macro)). The high end adds the Tactical sleeves, which can move fully into stocks or fully out. Defined Risk, Alternatives and Cash sit outside the range on both ends, matching the firm's printed Model Allocation Overview.</p>
+    <p><b>Current equity.</b> Looks through each equity-range sleeve to the ETFs it holds today and counts the ones YCharts classifies as Equity (green in the sleeve tables). A tactical sleeve parked in a cash-like ETF contributes nothing until it is back in stocks. A reading outside its range shows a dark marker.</p>
+    <p>Source: ${esc(data.source||'YCharts')}. Holdings as of ${esc(data.as_of)}; file generated ${esc(fmtGen(data.generated_at))}.</p>`;
+}
+
+async function init(){
+  const banner=document.getElementById('banner'), bt=document.getElementById('banner-text');
+  try{
+    const res=await fetch('data.json?t='+Date.now());
+    if(!res.ok) throw new Error('data.json not found ('+res.status+')');
+    const data=await res.json();
+    const models=data.models.map(m=>Object.assign({a:analyze(m,data.funds), funds:data.funds}, m));
+    document.getElementById('hdr-date').textContent='Holdings as of '+fmtDate(data.as_of);
+    document.getElementById('update-info').textContent='Refreshed '+fmtGen(data.generated_at);
+    renderKey(); renderGroups(models); renderNotes(data);
+    const unk=models.filter(m=>m.a.alloc.unk>0.0005).map(m=>m.name);
+    const stale=(Date.now()-new Date(data.as_of+'T12:00:00'))/86400000>5;
+    if(unk.length){ banner.className='banner warn'; bt.textContent='Unmapped sleeve in: '+unk.join(', ')+' — add a rule in index.html.'; }
+    else if(stale){ banner.className='banner warn'; bt.textContent='Data is more than five days old — the refresh routine may have missed a run.'; }
+    else banner.style.display='none';
+    document.getElementById('sdot').className='sdot live';
+    document.getElementById('stext').textContent=models.length+' models · YCharts target weights';
+    document.getElementById('dashboard').style.display='block';
+  }catch(e){
+    banner.className='banner err'; bt.textContent='Could not load data.json: '+e.message;
+    document.getElementById('sdot').className='sdot error'; document.getElementById('stext').textContent='Data unavailable';
+  }
+}
+init();
+</script>
+</body>
+</html>
