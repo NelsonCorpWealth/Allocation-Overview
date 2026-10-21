@@ -25,6 +25,13 @@ You are updating `data.json` in this repository from YCharts. The file feeds the
 
 Use the display names and tiers EXACTLY as written, in this order.
 
+## Handling YCharts data (read before Step 1)
+- Never type, retype or reformat a number from a YCharts tool result. Every value in data.json must come from a script reading a saved copy of the response.
+- After each YCharts call, save the result verbatim to `/tmp/raw/<step>_<n>.json` (copy the exact result text; if the tool already wrote the result to a file, copy that file). Do not summarize, round or reorder it.
+- If a response is too long to save verbatim in one go, re-request it in smaller batches until each batch can be saved.
+- Build data.json only with a script that reads `/tmp/raw/`. Keep `/tmp/raw` out of the repo — commit data.json only.
+- If any value could not be taken from a saved response, do not commit; say which at the top of the summary.
+
 ## Steps
 
 1. **Top-level holdings.** Call `get_model_portfolio_holdings` for all 16 IDs with `weight_type="target"` (batches of up to 10). Drop any holding with weight `0.000000` (inactive universe positions). Weights are percent; divide by 100.
