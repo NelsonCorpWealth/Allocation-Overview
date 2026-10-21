@@ -56,9 +56,10 @@ Use the display names and tiers EXACTLY as written, in this order.
 6. **Validate.** Run: `git show HEAD:data.json > /tmp/prev.json && python validate_data.py data.json --prev /tmp/prev.json`
    Exit code 0 means safe. Anything else: DO NOT COMMIT. Paste the validator output in your summary and stop.
 
-7. **Commit only if data changed.** If the validator reports "No allocation or holdings changes vs previous file", say so and stop without committing (a new `generated_at` alone is not a change). Otherwise:
-   `git add data.json && git commit -m "Allocation refresh (as of <as_of>)" && git push origin main`
-   (If the push is redirected to a `claude/` branch, that is expected — a GitHub Action promotes it to main after re-validating.)
+7. **Commit every run.** Commit even when the validator reports "No allocation or holdings changes vs previous file" — the dashboard reads `as_of` from data.json and flags the page as stale if it is more than five days old, so a skipped commit looks like a missed run.
+   If the validator reported changes: `git add data.json && git commit -m "Allocation refresh (as of <as_of>)" && git push origin main`
+   If it reported no changes: `git add data.json && git commit -m "Allocation refresh (as of <as_of>) - no changes" && git push origin main`
+   (If the push is redirected to a `claude/` branch, that is expected — a GitHub Action promotes it to main after re-validating.) Only skip the commit when validation fails.
 
 8. **Summary.** Lead with the validator's CHANGED lines — which sleeves were added, removed or re-weighted in which models, and which sleeves changed their holdings. If nothing changed, say so in one line.
 
