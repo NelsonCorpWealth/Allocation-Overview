@@ -1,6 +1,6 @@
 {
-  "as_of": "2026-10-22",
-  "generated_at": "2026-10-22T13:58:28+00:00",
+  "as_of": "2026-10-23",
+  "generated_at": "2026-10-23T11:21:17+00:00",
   "source": "YCharts (MCP, cloud routine)",
   "models": [
     {
@@ -378,11 +378,11 @@
           "weight": 0.1265,
           "holdings": [
             {
-              "ticker": "GDX",
+              "ticker": "USMV",
               "weight": 0.25
             },
             {
-              "ticker": "USMV",
+              "ticker": "GDX",
               "weight": 0.25
             },
             {
@@ -497,11 +497,11 @@
           "weight": 0.08,
           "holdings": [
             {
-              "ticker": "GDX",
+              "ticker": "USMV",
               "weight": 0.25
             },
             {
-              "ticker": "USMV",
+              "ticker": "GDX",
               "weight": 0.25
             },
             {
@@ -612,11 +612,11 @@
           "weight": 0.1925,
           "holdings": [
             {
-              "ticker": "GDX",
+              "ticker": "USMV",
               "weight": 0.25
             },
             {
-              "ticker": "USMV",
+              "ticker": "GDX",
               "weight": 0.25
             },
             {
@@ -661,11 +661,11 @@
               "weight": 0.5
             },
             {
-              "ticker": "INDS",
+              "ticker": "REZ",
               "weight": 0.25
             },
             {
-              "ticker": "REZ",
+              "ticker": "INDS",
               "weight": 0.25
             }
           ]
@@ -735,11 +735,11 @@
           "weight": 0.1,
           "holdings": [
             {
-              "ticker": "GDX",
+              "ticker": "USMV",
               "weight": 0.25
             },
             {
-              "ticker": "USMV",
+              "ticker": "GDX",
               "weight": 0.25
             },
             {
@@ -953,11 +953,11 @@
           "weight": 0.231,
           "holdings": [
             {
-              "ticker": "GDX",
+              "ticker": "USMV",
               "weight": 0.25
             },
             {
-              "ticker": "USMV",
+              "ticker": "GDX",
               "weight": 0.25
             },
             {
@@ -1002,11 +1002,11 @@
               "weight": 0.5
             },
             {
-              "ticker": "INDS",
+              "ticker": "REZ",
               "weight": 0.25
             },
             {
-              "ticker": "REZ",
+              "ticker": "INDS",
               "weight": 0.25
             }
           ]
@@ -1065,11 +1065,11 @@
           "weight": 0.1055,
           "holdings": [
             {
-              "ticker": "GDX",
+              "ticker": "USMV",
               "weight": 0.25
             },
             {
-              "ticker": "USMV",
+              "ticker": "GDX",
               "weight": 0.25
             },
             {
@@ -1169,11 +1169,11 @@
           "weight": 0.2805,
           "holdings": [
             {
-              "ticker": "GDX",
+              "ticker": "USMV",
               "weight": 0.25
             },
             {
-              "ticker": "USMV",
+              "ticker": "GDX",
               "weight": 0.25
             },
             {
@@ -1350,11 +1350,11 @@
           "weight": 0.992675,
           "holdings": [
             {
-              "ticker": "GDX",
+              "ticker": "USMV",
               "weight": 0.25
             },
             {
-              "ticker": "USMV",
+              "ticker": "GDX",
               "weight": 0.25
             },
             {
@@ -1509,10 +1509,6 @@
       "name": "State Street SPDR Bloomberg Intl TB ETF",
       "group": "Fixed Income"
     },
-    "CASH": {
-      "name": "Cash",
-      "group": "Cash"
-    },
     "GBIL": {
       "name": "Goldman Sachs Access Treasury 0-1 Year ETF",
       "group": "Fixed Income"
@@ -1608,6 +1604,10 @@
     "XLE": {
       "name": "State Street Energy Select Sector SPDR ETF",
       "group": "Equity"
+    },
+    "CASH": {
+      "name": "Cash",
+      "group": "Cash"
     }
   }
 }
