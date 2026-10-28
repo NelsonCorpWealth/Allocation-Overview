@@ -1,6 +1,6 @@
 {
-  "as_of": "2026-10-27",
-  "generated_at": "2026-10-27T11:17:34+00:00",
+  "as_of": "2026-10-28",
+  "generated_at": "2026-10-28T11:23:14+00:00",
   "source": "YCharts (MCP, cloud routine)",
   "models": [
     {
@@ -1497,14 +1497,6 @@
     }
   ],
   "funds": {
-    "VTI": {
-      "name": "Vanguard Morningstar Total Stock Mkt ETF",
-      "group": "Equity"
-    },
-    "XLE": {
-      "name": "State Street Energy Select Sector SPDR ETF",
-      "group": "Equity"
-    },
     "BIL": {
       "name": "State Street SPDR Bloomberg 1-3 Month T-Bill ETF",
       "group": "Fixed Income"
@@ -1603,6 +1595,14 @@
     },
     "USMV": {
       "name": "iShares MSCI USA Min Vol Factor ETF",
+      "group": "Equity"
+    },
+    "VTI": {
+      "name": "Vanguard Morningstar Total Stock Mkt ETF",
+      "group": "Equity"
+    },
+    "XLE": {
+      "name": "State Street Energy Select Sector SPDR ETF",
       "group": "Equity"
     },
     "CASH": {
