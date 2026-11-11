@@ -1,6 +1,6 @@
 {
-  "as_of": "2026-11-10",
-  "generated_at": "2026-11-10T12:21:18+00:00",
+  "as_of": "2026-11-11",
+  "generated_at": "2026-11-11T12:22:15+00:00",
   "source": "YCharts (MCP, cloud routine)",
   "models": [
     {
@@ -1509,10 +1509,6 @@
       "name": "State Street SPDR Bloomberg Intl TB ETF",
       "group": "Fixed Income"
     },
-    "CASH": {
-      "name": "Cash",
-      "group": "Cash"
-    },
     "GBIL": {
       "name": "Goldman Sachs Access Treasury 0-1 Year ETF",
       "group": "Fixed Income"
@@ -1608,6 +1604,10 @@
     "XLE": {
       "name": "State Street Energy Select Sector SPDR ETF",
       "group": "Equity"
+    },
+    "CASH": {
+      "name": "Cash",
+      "group": "Cash"
     }
   }
 }
